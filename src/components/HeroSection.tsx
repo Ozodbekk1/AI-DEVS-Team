@@ -31,7 +31,7 @@ export function HeroSection({ onProblemClick, onTeamClick }: HeroSectionProps) {
           <div className='space-y-8 animate-fade-in-up'>
             <div className='inline-block'>
               <span className='bg-gradient-to-r from-[#4A67FF] via-purple-500 to-[#00D1B2] text-white px-5 py-2.5 rounded-full shadow-lg animate-shimmer bg-[length:200%_100%]'>
-                🏆 AI500 Hackathon 2024
+                🏆 AI500 Hackathon 2025
               </span>
             </div>
 
