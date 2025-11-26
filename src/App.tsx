@@ -11,6 +11,7 @@ import { BuildStepsSection } from "./components/BuildStepsSection";
 import { Footer } from "./components/Footer";
 import { ScrollProgress } from "./components/ScrollProgress";
 import { FloatingCTA } from "./components/FloatingCTA";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   const [scrollY, setScrollY] = useState(0);
@@ -58,6 +59,7 @@ export default function App() {
       <TechStackSection />
       <BuildStepsSection />
       <Footer />
+      <Analytics />
     </div>
   );
 }
