@@ -1,92 +1,162 @@
 /** @format */
-
 import { Github, Linkedin, Figma } from "lucide-react";
+import { motion } from "framer-motion";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+
+const MotionDiv = motion.div;
+const MotionH2 = motion.h2;
+const MotionP = motion.p;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.2, delayChildren: 0.15 },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 50, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+};
 
 export function TeamSection() {
   const team = [
     {
-      name: "Full Stack Developer & Team Lead",
+      name: "Ozodbek",
       role: "Full Stack Developer & Team Lead",
-      skills: "React • Next.js • Node.js",
+      skills: "React • Next.js • Node.js • TypeScript",
       image: "/ozodbek.jpg",
       socials: [
-        { icon: Github, href: "#" },
-        { icon: Linkedin, href: "#" },
+        { icon: Github, href: "https://github.com/ozodbekk1" },
+        { icon: Linkedin, href: "https://www.linkedin.com/in/ozodbekw" },
       ],
     },
     {
-      name: "AI Engineer",
+      name: "Islombek",
       role: "AI Engineer",
-      skills: "Python • ML • Prompt Engineering",
-      image:
-        "https://images.unsplash.com/photo-1615348294633-38751a1fdf8f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3b21hbiUyMHRlY2glMjBwcm9mZXNzaW9uYWx8ZW58MXx8fHwxNzY0MTQ1MzE3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      skills: "Python • Machine Learning • LLMs • Prompt Engineering",
+      image: "/islombek.jpg",
       socials: [
-        { icon: Github, href: "#" },
-        { icon: Linkedin, href: "#" },
+        { icon: Github, href: "https://github.com/mamajonov023" },
+        {
+          icon: Linkedin,
+          href: "https://www.linkedin.com/in/islombek-mamajonov-a1271a344",
+        },
       ],
     },
     {
-      name: "UI/UX Designer",
+      name: "Hojiakbar",
       role: "UI/UX Designer",
-      skills: "Figma • UX • Product Flow",
-      image:
-        "https://images.unsplash.com/photo-1673101609020-4b5e203885bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXNpZ25lciUyMHdvcmtzcGFjZSUyMHBvcnRyYWl0fGVufDF8fHx8MTc2NDA3NTczMnww&ixlib=rb-4.1.0&q=80&w=1080",
+      skills: "Figma • Framer • User Research • Design Systems",
+      image: "/hojiakbar.jpg",
       socials: [
-        { icon: Figma, href: "#" },
-        { icon: Linkedin, href: "#" },
+        { icon: Github, href: "https://github.com/byteMino" },
+        {
+          icon: Linkedin,
+          href: "https://www.linkedin.com/in/minojidinov-h-934a4139a",
+        },
       ],
     },
   ];
 
   return (
-    <section id='team' className='bg-white py-24 relative overflow-hidden'>
-      <div className='absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#4A67FF]/5 rounded-full blur-3xl'></div>
+    <section id='team' className='relative py-24 lg:py-32 overflow-hidden'>
+      {/* Beautiful soft gradient background – exactly like your Hero */}
+      <div className='absolute inset-0 bg-gradient-to-br from-white via-purple-50/40 to-blue-50/30' />
+      <div className='absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/40' />
 
-      <div className='max-w-7xl mx-auto px-6 relative'>
-        <div className='text-center mb-16'>
-          <h2 className='text-[#111827] mb-4'>Meet Our Team</h2>
-          <p className='text-[#374151] text-xl max-w-2xl mx-auto'>
-            A diverse team with expertise in AI, engineering, and design
-          </p>
-          <div className='w-24 h-1 bg-gradient-to-r from-[#4A67FF] to-[#00D1B2] mx-auto rounded-full mt-6'></div>
+      {/* Animated subtle mesh blobs – same feel as Hero */}
+      <div className='absolute top-0 -left-40 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-blue-400/10 rounded-full blur-3xl animate-pulse-slow' />
+      <div className='absolute bottom-0 -right-40 w-96 h-96 bg-gradient-to-tl from-teal-400/20 via-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse-slower' />
+      <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-[#4A67FF]/5 via-purple-500/5 to-[#00D1B2]/5 rounded-full blur-3xl animate-gradient-shift opacity-60' />
+
+      <div className='relative max-w-7xl mx-auto px-6'>
+        {/* Heading */}
+        <div className='text-center mb-20'>
+          <MotionH2
+            initial={{ opacity: 0, y: -30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.9 }}
+            className='text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6'>
+            Meet Our Team
+          </MotionH2>
+          <MotionP
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className='text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed'>
+            Three minds, one vision — building the future of AI-powered personal
+            styling.
+          </MotionP>
         </div>
 
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+        {/* Team Cards */}
+        <MotionDiv
+          variants={containerVariants}
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ once: true, margin: "-100px" }}
+          className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-12'>
           {team.map((member, index) => (
-            <div
+            <MotionDiv
               key={index}
-              className='group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all border border-gray-100 hover:border-[#4A67FF]/30 hover:-translate-y-2'>
-              <div className='flex flex-col items-center text-center space-y-5'>
-                <div className='relative'>
-                  <div className='absolute inset-0 bg-gradient-to-br from-[#4A67FF] to-[#00D1B2] rounded-full blur-xl opacity-0 group-hover:opacity-50 transition-opacity'></div>
+              variants={itemVariants}
+              whileHover={{ y: -12, transition: { duration: 0.4 } }}
+              className='group relative'>
+              <div className='relative bg-white/70 backdrop-blur-2xl rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/60'>
+                {/* Hover glow overlay */}
+                <div className='absolute inset-0 bg-gradient-to-br from-purple-400/10 via-blue-400/5 to-teal-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700' />
+
+                {/* Member Image */}
+                <div className='relative overflow-hidden'>
                   <ImageWithFallback
                     src={member.image}
-                    alt={member.role}
-                    className='w-28 h-28 rounded-full object-cover border-4 border-white shadow-xl relative z-10 ring-4 ring-gray-100 group-hover:ring-[#4A67FF]/30 transition-all'
+                    alt={member.name}
+                    width={500}
+                    height={500}
+                    className='w-full h-96 object-cover transition-transform duration-800 group-hover:scale-110'
                   />
+                  <div className='absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent' />
                 </div>
-                <div>
-                  <p className='text-[#111827] mb-2'>{member.role}</p>
-                </div>
-                <div className='inline-block bg-gradient-to-r from-[#4A67FF] to-[#00D1B2] text-white px-5 py-2.5 rounded-lg shadow-md'>
-                  {member.skills}
-                </div>
-                <div className='flex gap-4 pt-3'>
-                  {member.socials.map((social, idx) => (
-                    <a
-                      key={idx}
-                      href={social.href}
-                      className='p-3 rounded-xl bg-gray-50 text-[#374151] hover:bg-[#4A67FF] hover:text-white transition-all hover:scale-110 hover:shadow-lg'
-                      aria-label='Social link'>
-                      <social.icon className='w-5 h-5' />
-                    </a>
-                  ))}
+
+                {/* Card Content */}
+                <div className='relative p-8 -mt-20'>
+                  <div className='bg-white/90 backdrop-blur-xl rounded-2xl p-8 shadow-2xl border border-white/80'>
+                    <h3 className='text-2xl lg:text-3xl font-bold text-gray-900'>
+                      {member.name}
+                    </h3>
+                    <p className='text-transparent bg-gradient-to-r from-[#4A67FF] via-purple-600 to-[#00D1B2] bg-clip-text font-bold text-lg mt-1'>
+                      {member.role}
+                    </p>
+                    <p className='text-gray-600 mt-4 text-sm lg:text-base leading-relaxed'>
+                      {member.skills}
+                    </p>
+
+                    {/* Social Links */}
+                    <div className='flex gap-4 mt-7'>
+                      {member.socials.map((social, idx) => {
+                        const Icon = social.icon;
+                        return (
+                          <a
+                            key={idx}
+                            href={social.href}
+                            target='_blank'
+                            rel='noopener noreferrer'
+                            className='p-3.5 bg-white/80 backdrop-blur rounded-full border border-gray-200/80 hover:border-purple-400 hover:bg-gradient-to-br hover:from-purple-50 hover:to-blue-50 transition-all duration-300 transform hover:scale-110 hover:shadow-lg'>
+                            <Icon size={22} className='text-gray-700' />
+                          </a>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </MotionDiv>
           ))}
-        </div>
+        </MotionDiv>
       </div>
     </section>
   );
