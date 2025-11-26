@@ -1,13 +1,16 @@
 /** @format */
-import { Github, Linkedin, Figma } from "lucide-react";
+import { Github, Linkedin } from "lucide-react";
 import { motion } from "framer-motion";
+import type { Variants, Easing } from "framer-motion";
+
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 
 const MotionDiv = motion.div;
 const MotionH2 = motion.h2;
 const MotionP = motion.p;
 
-const containerVariants = {
+// Container animation
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -15,9 +18,16 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+// Item animation with proper easing type
+const easeOutCubic: Easing = [0.17, 0.55, 0.55, 1];
+
+const itemVariants: Variants = {
   hidden: { y: 50, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: { type: "tween", duration: 0.8, ease: easeOutCubic },
+  },
 };
 
 export function TeamSection() {
@@ -62,11 +72,11 @@ export function TeamSection() {
 
   return (
     <section id='team' className='relative py-24 lg:py-32 overflow-hidden'>
-      {/* Beautiful soft gradient background – exactly like your Hero */}
+      {/* Background gradients */}
       <div className='absolute inset-0 bg-gradient-to-br from-white via-purple-50/40 to-blue-50/30' />
       <div className='absolute inset-0 bg-gradient-to-t from-white/70 via-transparent to-white/40' />
 
-      {/* Animated subtle mesh blobs – same feel as Hero */}
+      {/* Animated blobs */}
       <div className='absolute top-0 -left-40 w-96 h-96 bg-gradient-to-br from-purple-400/20 to-blue-400/10 rounded-full blur-3xl animate-pulse-slow' />
       <div className='absolute bottom-0 -right-40 w-96 h-96 bg-gradient-to-tl from-teal-400/20 via-purple-400/10 to-pink-400/10 rounded-full blur-3xl animate-pulse-slower' />
       <div className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gradient-to-br from-[#4A67FF]/5 via-purple-500/5 to-[#00D1B2]/5 rounded-full blur-3xl animate-gradient-shift opacity-60' />
@@ -104,7 +114,10 @@ export function TeamSection() {
             <MotionDiv
               key={index}
               variants={itemVariants}
-              whileHover={{ y: -12, transition: { duration: 0.4 } }}
+              whileHover={{
+                y: -12,
+                transition: { duration: 0.4, type: "tween" },
+              }}
               className='group relative'>
               <div className='relative bg-white/70 backdrop-blur-2xl rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 overflow-hidden border border-white/60'>
                 {/* Hover glow overlay */}
