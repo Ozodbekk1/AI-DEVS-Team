@@ -33,7 +33,7 @@ const itemVariants: Variants = {
 export function TeamSection() {
   const team = [
     {
-      name: "Ozodbek",
+      name: "Alimjonov Ozodbek",
       role: "Full Stack Developer & Team Lead",
       skills: "React • Next.js • Node.js • TypeScript",
       image: "/ozodbek.jpg",
@@ -43,7 +43,7 @@ export function TeamSection() {
       ],
     },
     {
-      name: "Islombek",
+      name: "Mamajonov Islombek",
       role: "AI Engineer",
       skills: "Python • Machine Learning • LLMs • Prompt Engineering",
       image: "/islombek.jpg",
@@ -56,7 +56,7 @@ export function TeamSection() {
       ],
     },
     {
-      name: "Hojiakbar",
+      name: "Minojidinov Hojiakbar",
       role: "UI/UX Designer",
       skills: "Figma • Framer • User Research • Design Systems",
       image: "/hojiakbar.jpg",
